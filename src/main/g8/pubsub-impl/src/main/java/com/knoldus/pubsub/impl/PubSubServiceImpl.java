@@ -25,7 +25,6 @@ public class PubSubServiceImpl implements PubSubService {
     @Override
     public ServiceCall<Temperature, NotUsed> publishTemperature(String id) {
         return temperature -> {
-            System.out.println("Request for publish for=======" + id);
             final PubSubRef<Temperature> topic =
                     pubSub.refFor(TopicId.of(Temperature.class, id));
             topic.publish(temperature);
